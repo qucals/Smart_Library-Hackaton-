@@ -4,6 +4,7 @@ import math
 # Считать информация из CSV файла (IDuser, IDbook, Rates)
 # Возвращает структуру данных dict: каждому пользователю ставится в соответствие справочник его оценок вида «продукт»:«оценка».
 def ReadFile (filename = "D:/fe/github/iOS_Library/iOS_Library/test.csv"):
+    f = open (filename)
     r = csv.reader (f)
     mentions = dict()
     for line in r:
