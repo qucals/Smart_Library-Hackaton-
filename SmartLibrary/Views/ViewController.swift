@@ -8,67 +8,102 @@
 
 import Foundation
 import UIKit
+
 import FirebaseAuth
+import LGButton
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
-    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    @IBOutlet weak var logInButton: LGButton!
+    
+    var allTextFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: Replace a simple UIButton to View with class as LGButton and then delete UIHelpers
+        self.setGradientBackground(colours: [Constants.Colours.firstColourGradient,
+                                             Constants.Colours.secondColourGradient])
         
-        self.setGradientBackground(colours: [Constants.Colours.firstColourGradient, Constants.Colours.secondColourGradient])
+        // errorLabel.textColor = Constants.Colours.stateColourTextField
         
         // Set textfields' delegates for handling touches of outside it
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
+        
+        allTextFields.append(emailTextField)
+        allTextFields.append(passwordTextField)
     }
     
     @IBAction func tappedLogin(_ sender: Any) {
         
         // Validate the fields
-        let error = validateFields()
+        let validation = validateFields()
         
-        if error != nil {
+        for textFieldValidate in validation.1 {
+            if textFieldValidate.1 {
+                
+                changeColourTextField(textFieldValidate.0 as! RoundTextField,
+                                      Constants.Colours.stateColourTextField)
+            } else {
+                
+                changeColourTextField(textFieldValidate.0 as! RoundTextField,
+                                      Constants.Colours.errorColourTextField)
+            }
+        }
+        
+        if let errorMessage = validation.0 {
+            showError(errorMessage)
             
-            // There's something wrong with the fields, show erro message
-            showError(error!)
         } else {
+            showError("")
+            
+            logInButton.isLoading = true
             
             // Create cleaned version of the data
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-            
+                
             // Sign In to the system
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, err) in
+            
+                self.logInButton.isLoading = false
                 
                 // Check for errors
                 if err != nil {
-                    
+                            
                     // There was an error login to the system
                     self.showError("Error login user")
+                } else {
+                    
+                    self.transitionToHome()
                 }
             }
         }
     }
     
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message.
-    func validateFields() -> String? {
+    func validateFields() -> (String?, [(UITextField, Bool)]) {
         
-        // Check that all fields are filled in
-        if emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
-            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-            return "Please fill in all fields."
+        var returnValues: (String?, [(UITextField, Bool)]) = (nil, [])
+        
+        for textField in allTextFields {
+            if textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                
+                returnValues.0 = "Please fill all fields."
+                returnValues.1.append((textField, false))
+                
+            } else {
+                
+                returnValues.1.append((textField, true))
+            }
         }
         
-        return nil
+        return returnValues
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,9 +146,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showError(_ message: String) {
+
+        errorLabel.text! = message
+    }
+
+    func transitionToHome() {
         
-        errorLabel.text = message
-        errorLabel.alpha = 1
+        performSegue(withIdentifier: "toHomeBC", sender: self)
     }
 }
 

@@ -20,7 +20,6 @@
 		6F43AB6D240D480400351AD0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AB6C240D480400351AD0 /* Utilities.swift */; };
 		6F43AB71240D524100351AD0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AB70240D524100351AD0 /* Constants.swift */; };
 		6F43AB78240ECF5F00351AD0 /* FjallaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F43AB77240ECF5F00351AD0 /* FjallaOne-Regular.ttf */; };
-		6F43AB80240ED31B00351AD0 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AB7F240ED31B00351AD0 /* RoundButton.swift */; };
 		6F43AB82240ED3DB00351AD0 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AB81240ED3DB00351AD0 /* RoundTextField.swift */; };
 		6F9C546C2414362E00ED2E4C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9C546B2414362E00ED2E4C /* logo.png */; };
 		6FF9EF69240578F40021A25B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF9EF68240578F40021A25B /* AppDelegate.swift */; };
@@ -94,7 +93,6 @@
 		6F43AB6C240D480400351AD0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		6F43AB70240D524100351AD0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F43AB77240ECF5F00351AD0 /* FjallaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FjallaOne-Regular.ttf"; sourceTree = "<group>"; };
-		6F43AB7F240ED31B00351AD0 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		6F43AB81240ED3DB00351AD0 /* RoundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
 		6F9C546B2414362E00ED2E4C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		6FF9EF65240578F40021A25B /* SmartLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +162,6 @@
 		6F43AB7C240ED2FE00351AD0 /* UIHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				6F43AB7F240ED31B00351AD0 /* RoundButton.swift */,
 				6F43AB81240ED3DB00351AD0 /* RoundTextField.swift */,
 			);
 			path = UIHelpers;
@@ -403,7 +400,6 @@
 				6FF9EF6D240578F40021A25B /* ViewController.swift in Sources */,
 				6F10A7D824081BAA0072A71A /* MapNavigationController.swift in Sources */,
 				6FF9EF69240578F40021A25B /* AppDelegate.swift in Sources */,
-				6F43AB80240ED31B00351AD0 /* RoundButton.swift in Sources */,
 				6F10A7D1240818D20072A71A /* MainTabBarController.swift in Sources */,
 				6FF9EF6B240578F40021A25B /* SceneDelegate.swift in Sources */,
 				6F43AAB6240B81C600351AD0 /* ProfileViewController.swift in Sources */,
