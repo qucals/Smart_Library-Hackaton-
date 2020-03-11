@@ -56,4 +56,4 @@ def makeRecommendation (userID, userRates, nBestUsers, nBestBook):
     return [(x[0], x[1]) for x in bestBook]
 
 # Тест
-#rec = makeRecommendation ('202', ReadFile(), 5, 5)
+rec = makeRecommendation ('206', ReadFile(), 5, 5)
