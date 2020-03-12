@@ -14,7 +14,7 @@ db = firestore.client()
 #Находим сколько книг уже имеется
 docs = db.collection(u'NewBook').stream()
 
-f = open('D:\fe\github\iOS_Library\iOS_Library\Base_Irbis.TXT',encoding = 'utf-8')
+f = open('D:/fe/github/iOS_Library/iOS_Library/Base_Irbis.TXT',encoding = 'utf-8')
 
 p = 0
 
