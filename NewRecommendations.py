@@ -12,7 +12,7 @@ firebase_admin.initialize_app(cred)
 # Подключаемся
 db = firestore.client()
 
-#Находим сколько книг уже имеется
+#подключаемся к коллекции
 docs = db.collection(u'nrate').stream()
 
 # Считать информация из CSV файла (IDuser, IDbook, Rates)
@@ -22,19 +22,17 @@ def ReadFile (docs):
     k=0
     for doc in docs:
         k+=1
-    print(k)
     i=0
     while i != k:
         doc_ref = db.collection(u'nrate').document(str(i)).get().to_dict()
-        print(doc_ref)
         user    = doc_ref['IdUser']
         product = doc_ref['Idbook']
         rate    = float(doc_ref['rate'])
-        if not user in mentions:
-            mentions[user] = dict()
+        if not user in mentions: #добавляем пользователя, если его нет в списке
+            mentions[user] = dict()       
         mentions[user][product] = rate
         i+=1
-    print(mentions)
+    
     return mentions
 
 # Функция "Косинусная мера схожести"
@@ -43,11 +41,8 @@ def distCosine (vecA, vecB):
         d = 0.0
         for dim in x:
             if dim in y:
-                d += (x[dim])*(y[dim]) #производим нормализацию оценок, вычтя из оценки мат. ожидание (условно 3.0)
-        print(d)
-        return d
-    print(abs(dotProduct (vecA, vecB) / math.sqrt(dotProduct(vecA,vecA)) / math.sqrt(dotProduct(vecB,vecB))), 'q')
-    
+                d += (x[dim]-3)*(y[dim]-3) #производим нормализацию оценок, вычтя из оценки мат. ожидание (условно 3.0)
+                return d      
     return abs(dotProduct (vecA, vecB) / math.sqrt(dotProduct(vecA,vecA)) / math.sqrt(dotProduct(vecB,vecB)))
 
 # Основная функция makeRecommendation
@@ -57,7 +52,6 @@ def distCosine (vecA, vecB):
 # nBestBook - Кол-во книг, которые мы будем рекомендовать пользователю
 def makeRecommendation (userID, userRates, nBestUsers, nBestBook):
     matches = [(u, distCosine(userRates[userID], userRates[u])) for u in userRates if u != userID] # записываем соотношение вкусов Users к позователю
-    print(matches, 'l')
     bestMatches = sorted(matches, key = lambda x: (x[1], x[0]), reverse=True)[:nBestUsers] #Выделям и сортируем лучших nBestUsers()
     print ("Most correlated with '%s' users:" % userID)
     for line in bestMatches:
