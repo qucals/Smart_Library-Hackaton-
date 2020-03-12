@@ -32,6 +32,7 @@ def ReadFile (docs):
             mentions[user] = dict()
         mentions[user][product] = rate
         i+=1
+    print(mentions)
     return mentions
 
 # Функция "Косинусная мера схожести"

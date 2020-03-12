@@ -12,8 +12,8 @@ firebase_admin.initialize_app(cred)
 # Подключаемся
 db = firestore.client()
 
-#подключаемся к коллекции
-docs = db.collection(u'nrate').stream()
+#Находим сколько книг уже имеется
+docs = db.collection(u'books').stream()
 
 # Считать информация из CSV файла (IDuser, IDbook, Rates)
 # Возвращает структуру данных dict: каждому пользователю ставится в соответствие справочник его оценок вида «продукт»:«оценка».
@@ -21,18 +21,20 @@ def ReadFile (docs):
     mentions = dict()
     k=0
     for doc in docs:
+        for key, value in doc.to_dict().items():
+            if key == 'scores':
+                for score in value:
+                    for key, value in score.items():                        
+                        if not score['id_user'] in mentions:
+                            mentions[score['id_user']] = dict()
+                        if str(score['score']) == 'None':
+                            break
+                        if score['score'] <= 5 and score['score'] >= 0:
+                            print(score['score'])
+                            mentions[score['id_user']][doc.id] = float(score['score'])
+                                        
         k+=1
-    i=0
-    while i != k:
-        doc_ref = db.collection(u'nrate').document(str(i)).get().to_dict()
-        user    = doc_ref['IdUser']
-        product = doc_ref['Idbook']
-        rate    = float(doc_ref['rate'])
-        if not user in mentions: #добавляем пользователя, если его нет в списке
-            mentions[user] = dict()       
-        mentions[user][product] = rate
-        i+=1
-    
+    print(mentions)
     return mentions
 
 # Функция "Косинусная мера схожести"
@@ -41,8 +43,8 @@ def distCosine (vecA, vecB):
         d = 0.0
         for dim in x:
             if dim in y:
-                d += (x[dim]-3)*(y[dim]-3) #производим нормализацию оценок, вычтя из оценки мат. ожидание (условно 3.0)
-        return d      
+                d += (x[dim])*(y[dim]) #производим нормализацию оценок, вычтя из оценки мат. ожидание (условно 3.0)
+        return d    
     return abs(dotProduct (vecA, vecB) / math.sqrt(dotProduct(vecA,vecA)) / math.sqrt(dotProduct(vecB,vecB)))
 
 # Основная функция makeRecommendation
@@ -75,5 +77,5 @@ def makeRecommendation (userID, userRates, nBestUsers, nBestBook):
 
 
 # Тест
-name = '201'
+name = 'ew'
 rec = makeRecommendation (name, ReadFile(docs), 5, 5)
