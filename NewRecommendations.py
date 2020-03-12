@@ -42,7 +42,7 @@ def distCosine (vecA, vecB):
         for dim in x:
             if dim in y:
                 d += (x[dim]-3)*(y[dim]-3) #производим нормализацию оценок, вычтя из оценки мат. ожидание (условно 3.0)
-                return d      
+        return d      
     return abs(dotProduct (vecA, vecB) / math.sqrt(dotProduct(vecA,vecA)) / math.sqrt(dotProduct(vecB,vecB)))
 
 # Основная функция makeRecommendation
