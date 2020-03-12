@@ -8,45 +8,36 @@
 
 import Foundation
 import UIKit
-
 import FirebaseAuth
 import Firebase
-import LGButton
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var idCardTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-        
-    @IBOutlet weak var signUpButton: LGButton!
     
-    var allTextFields: [UITextField] = []
+    @IBOutlet weak var continueButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        usernameTextField.delegate = self
         idCardTextField.delegate = self
         passwordTextField.delegate = self
         emailTextField.delegate = self
-        
-        allTextFields.append(idCardTextField)
-        allTextFields.append(emailTextField)
-        allTextFields.append(passwordTextField)
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         textField.resignFirstResponder()
         return true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         if touches.first != nil {
-        
             view.endEditing(true)
         }
         
@@ -54,60 +45,45 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Check the fields and validate that the data is correct. If everything is correct, this method returns nil. Otherwise, it returns the error message.
-    func validateFields() -> (String?, [(UITextField, Bool)]) {
+    func validateFields() -> String? {
         
-        var returnValues: (String?, [(UITextField, Bool)]) = (nil, [])
-        
-        for textField in allTextFields {
-            if textField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
-                
-                returnValues.0 = "Please fill all fields"
-                returnValues.1.append((textField, false))
-                
-            } else {
-                
-                returnValues.1.append((textField, true))
-            }
+        // Check that all fields are filled in
+        if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            idCardTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
+            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Please fill in all fields."
         }
         
-        return returnValues
+        // Check if the password is secure
+        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if Utilities.isPasswordValid(cleanedPassword) == false {
+            return "Please make sure your password is at least 8 characters, contains a special character and a number."
+        }
+        
+        return nil
     }
     
-    @IBAction func tappedSignUp(_ sender: Any) {
-    
+    @IBAction func tappedContinue(_ sender: UIButton) {
+        
         // Validate the fields
-        let validation = validateFields()
+        let error = validateFields()
         
-        for textFieldValidate in validation.1 {
-            if textFieldValidate.1 {
-                
-                changeColourTextField(textFieldValidate.0 as! RoundTextField,
-                                      UIColor.groupTableViewBackground)
-            } else {
-                
-                changeColourTextField(textFieldValidate.0 as! RoundTextField,
-                                      Constants.Colours.errorColourTextField)
-            }
-        }
-        
-        if let errorMessage = validation.0 {
+        if error != nil {
             
             // There's something wrong with the fields, show error message
-            showError(errorMessage)
+            showError(error!)
         } else {
-            showError("")
-            
-            signUpButton.isLoading = true
             
             // Create cleaned version of the data
+            let username = usernameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let idCard = idCardTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             // Create the user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-                
-                self.signUpButton.isLoading = false
                 
                 // Check for errors
                 if err != nil {
@@ -119,7 +95,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     // User was created successfully, now story the username and id card
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["IdCard": idCard, "uid": result!.user.uid]) { (error) in
+                    db.collection("users").addDocument(data: ["IdCard": idCard, "Name": username, "uid": result!.user.uid]) { (error) in
                         
                         if error != nil {
                             self.showError("Error saving user data")

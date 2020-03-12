@@ -45,4 +45,9 @@ extension UIViewController {
         
         view.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func changeColourTextField(_ textField: RoundTextField, _ colour: UIColor) {
+     
+        textField.borderColor = colour
+    }
 }

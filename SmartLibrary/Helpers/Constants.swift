@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftHEXColors
 
 struct Constants {
     
@@ -19,7 +20,11 @@ struct Constants {
     struct Colours {
         
         // Colours of main gradient
-        static let firstColourGradient = UIColor(red: 255 / 255, green: 214 / 255, blue: 146 / 255, alpha: 1.0)
-        static let secondColourGradient = UIColor(red: 225 / 255, green: 99 / 255, blue: 99 / 255, alpha: 1.0)
+        static let firstColourGradient = UIColor(hexString: "#FFD692")!
+        static let secondColourGradient = UIColor(hexString: "#E16363")!
+        
+        // Default colours
+        static let stateColourTextField = UIColor.groupTableViewBackground
+        static let errorColourTextField = UIColor(hexString: "#D63447")!
     }
 }
