@@ -8,6 +8,7 @@ target 'SmartLibrary' do
     pod 'Firebase/Auth'
     pod 'Firebase/Firestore'
     pod 'Firebase/Core'
+	pod 'Firebase/Database'
 
 	# For working with hex colours
     pod 'SwiftHEXColors'

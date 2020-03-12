@@ -106,15 +106,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return returnValues
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        if let mainTabBarController = segue.destination as? MainTabBarController {
-            
-            mainTabBarController.email = emailTextField.text
-            mainTabBarController.password = passwordTextField.text
-        }
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -141,13 +132,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showError(_ message: String) {
-
         errorLabel.text! = message
     }
 
     func transitionToHome() {
-        
-        performSegue(withIdentifier: Constants.Stroyboard.performSegueToHomeBC, sender: self)
+        performSegue(withIdentifier: Constants.Storyboard.performSegueToHomeBC, sender: self)
     }
 }
 

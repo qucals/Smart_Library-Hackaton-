@@ -12,9 +12,10 @@ import SwiftHEXColors
 
 struct Constants {
     
-    struct Stroyboard {
+    struct Storyboard {
         
         static let performSegueToHomeBC = "toHomeBC"
+        static let cellIdentifier = "bookCell"
     }
     
     struct Colours {
@@ -26,5 +27,10 @@ struct Constants {
         // Default colours
         static let stateColourTextField = UIColor.groupTableViewBackground
         static let errorColourTextField = UIColor(hexString: "#D63447")!
+    }
+    
+    struct Firebase {
+        
+        static let pathToCollectionBooks = "books"
     }
 }
