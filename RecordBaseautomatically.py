@@ -3,7 +3,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 # Ссылка на секретный ключ
-cred = credentials.Certificate('D:/fe/smart-library-1-firebase-adminsdk-g8x7r-2d069f053c.json')
+cred = credentials.Certificate('C:/Users/itcub/Documents/GitHub/iOS_Library/smart-library-8a179-firebase-adminsdk-c01sz-f51272754e.json')
 
 # Подключаемся к  БД
 firebase_admin.initialize_app(cred)
@@ -14,28 +14,33 @@ db = firestore.client()
 #Находим сколько книг уже имеется
 docs = db.collection(u'NewBook').stream()
 
-f = open('D:/fe/github/iOS_Library/iOS_Library/Base_Irbis.TXT',encoding = 'utf-8')
+f = open('C:/Users/itcub/Documents/GitHub/iOS_Library/Base_Irbis.TXT',encoding = 'utf-8')
 
 p = 0
 
 #подключаем и считываем данные
 #Запись
-def send(ID, name, Author,publisher,date,k):
+def send(ID, name, Author,publisher,date, bib):
     doc_ref = db.collection(u'NewBook').document(ID)
     doc_ref.set({
-        u'Name': name,
-        u'IDauthor': k+1,
-        u'Author': Author,
+        u'name': name,
+        u'id_user': '',
+        u'available': True,
+        u'author': Author,
+        u'id_library': bib,
         u'date': date,
-        u'publisher': publisher
+        u'publisher': publisher,
+        u'description': '',
+        u'score': 0
     })
     
-def name(k):
+def name():
     fID = ''
     fname = ''
     fauthor = ''
     fpublisher = ''
-    fdate = ''    
+    fdate = ''
+    fbib = ''
     for line in f:        
         result = list(line)
         #находим конец списка
@@ -68,6 +73,13 @@ def name(k):
                     break
                 fname+= result[i]
                 i+=1
+        #Название библиотеки
+        if(result[1]+result[2]+result[3] == '902'):
+            i = 8
+            a = len(line)
+            while i != a:                
+                fbib+= result[i]
+                i+=1
         #находим ББК
         if(result[1]+result[2]+result[3] == '903'):
             i = 6
@@ -87,12 +99,12 @@ def name(k):
             a = len(line)
             while i != a-1:
                 if result[i] == '^':
-                    i+=9
-                    fauthor += '_'
+                    fauthor += ' '
+                    i+=1
+                    while result[i] != '^':
+                        i+=1
+                    i+=2
                     while i != a:
-                        if result[i] == ' ':
-                            fauthor += '_'
-                            i+= 1
                         fauthor += result[i]
                         i+=1
                         if (i==a):
@@ -105,13 +117,11 @@ def name(k):
                     break   
                 fauthor += result[i]              
                 i+=1            
-    send(fID, fname, fauthor, fpublisher, fdate,k)
+    send(fID, fname, fauthor, fpublisher, fdate, fbib)
             
-k=0
+
 for line in f:
     
-    for doc in docs:
-        k+=1
     if line != " ":
-        a = name(k)
-    k+=1
+        name()
+ 
