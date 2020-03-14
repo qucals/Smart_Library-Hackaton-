@@ -11,6 +11,8 @@ import FirebaseFirestore
 
 class LibraryTableViewController: UITableViewController {
     
+    var currentUser: User!
+    
     var books: [Book] = []
     var booksCollectionRef: CollectionReference!
     

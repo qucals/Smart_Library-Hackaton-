@@ -11,8 +11,13 @@ import UIKit
 
 import FirebaseAuth
 import LGButton
+import FirebaseFirestore
+import Firebase
+import FirebaseDatabase
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+    var currentUser: User!
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,8 +28,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var allTextFields: [UITextField] = []
     
+    let db = Firestore.firestore()
+    
+    var ref: DatabaseReference!
+    // THERE
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
         
         self.setGradientBackground(colours: [Constants.Colours.firstColourGradient,
                                              Constants.Colours.secondColourGradient])
@@ -78,11 +90,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             
                     // There was an error login to the system
                     self.showError("Incorrect login or password")
-                } else {
-                    
-                    self.transitionToHome()
+                    return
                 }
             }
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            
+            ref.child(Constants.Firebase.pathToUsers).child(uid).observeSingleEvent(of: .value) { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                let phone = value?["Phone"] as? String
+                let title = value?["Title"] as? String
+                let taken_books = value?["Taken_books"] as? [String]
+                let favourite_books = value?["Favourite_books"] as? [String]
+                let points = value?["Points"] as? Int
+                
+                self.currentUser = User(uid: uid, phone: phone!, title: title!, taken_books: taken_books!, favourite_books: favourite_books!, points: points!)
+            }
+
+            self.transitionToHome()
         }
     }
     
@@ -104,6 +129,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         
         return returnValues
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is MainTabBarController {
+            let vc = segue.destination as? MainTabBarController
+            vc?.currentUser = currentUser
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

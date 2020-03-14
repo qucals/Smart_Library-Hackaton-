@@ -25,6 +25,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     var allTextFields: [UITextField] = []
     
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -119,16 +121,30 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     // User was created successfully, now story the username and id card
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["Phone": phone, "Points": "0", "uid": result!.user.uid]) { (error) in
-                        
+                    db.collection("users").document(result!.user.uid).setData(["Phone": phone,
+                                                                               "Points": 0,
+                                                                               "Taken_books": [],
+                                                                               "Favourite_books": [],
+                                                                               "Title": "Новичок",
+                                                                               "Max_points": 0]) { (error) in
                         if error != nil {
                             self.showError("Error saving user data")
                         }
                     }
                     
+                    self.currentUser = User(uid: result!.user.uid, phone: phone,
+                                title: "Новичок", taken_books: [], favourite_books: [], points: 0)
+                    
                     self.transitionToHomeBC()
                 }
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is MainTabBarController {
+            let vc = segue.destination as? MainTabBarController
+            vc?.currentUser = currentUser
         }
     }
     

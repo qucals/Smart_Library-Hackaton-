@@ -34,5 +34,6 @@ struct Constants {
     struct Firebase {
         
         static let pathToCollectionBooks = "books"
+        static let pathToUsers = "users"
     }
 }

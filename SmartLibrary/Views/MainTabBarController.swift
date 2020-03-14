@@ -12,13 +12,16 @@ import UserNotifications
 
 class MainTabBarController: UITabBarController {
 
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+     
+        let vc = self.viewControllers![0] as? ProfileNavigationController
+        vc?.currentUser = currentUser
         
         let center = UNUserNotificationCenter.current()
-
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
         }
     }
-    
 }

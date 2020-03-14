@@ -9,13 +9,20 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleLabel.text = currentUser.title
+        emailLabel.text = currentUser.phone
     }
     
-    @IBAction func acoountTapped(_ sender: Any) {
+    @IBAction func accountTapped(_ sender: Any) {
     }
     
     @IBAction func notificationsTapped(_ sender: Any) {

@@ -11,7 +11,12 @@ import UIKit
 
 class ProfileNavigationController: UINavigationController {
     
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let vc = self.topViewController as? ProfileViewController
+        vc?.currentUser = currentUser
     }
 }

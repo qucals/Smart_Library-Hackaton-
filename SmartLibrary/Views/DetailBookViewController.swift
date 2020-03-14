@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import FirebaseFirestore
 import LGButton
 
 class DetailBookViewController: UIViewController {
@@ -19,6 +19,9 @@ class DetailBookViewController: UIViewController {
     @IBOutlet weak var desciprtionLabel: UILabel!
     
     var selectedBook: Book!
+    var currentUser: User!
+    
+    let db =  Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +31,8 @@ class DetailBookViewController: UIViewController {
         desciprtionLabel.text = selectedBook.description
         takeButton.isHidden = !selectedBook.available
         
-        // let image = resizeImage(image: selectedBook.image, targetSize: CGSize(width: bookImage.bounds.size.width, height: bookImage.bounds.size.height))
-        
         bookImage.image = selectedBook.image
         setBlurEffect()
-        // bookImage.image = blurImage(usingImage: selectedBook.image, blurAmount: 90.0)
         
         bookImage.contentMode = .scaleAspectFill
     }
