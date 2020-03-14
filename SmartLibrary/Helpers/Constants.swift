@@ -15,6 +15,8 @@ struct Constants {
     struct Storyboard {
         
         static let performSegueToHomeBC = "toHomeBC"
+        static let performSegueToSelectedCell = "toDetailBook"
+        
         static let cellIdentifier = "bookCell"
     }
     

@@ -15,4 +15,7 @@ target 'SmartLibrary' do
 
 	# For working with Buttons
     pod 'LGButton'
+
+	# For working with Blur Visual Effects
+	pod 'VisualEffectView'
 end

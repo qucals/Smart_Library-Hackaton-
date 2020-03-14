@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6F10A7D1240818D20072A71A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F10A7D0240818D20072A71A /* MainTabBarController.swift */; };
 		6F29EC51240580B800CAE702 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29EC50240580B800CAE702 /* Extension.swift */; };
+		6F301D98241C0B55007DB4E3 /* logo_book.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F301D97241C0B55007DB4E3 /* logo_book.png */; };
+		6F301D9A241C0CAD007DB4E3 /* BookImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F301D99241C0CAD007DB4E3 /* BookImage.swift */; };
+		6F301D9C241C9748007DB4E3 /* DetailBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F301D9B241C9748007DB4E3 /* DetailBookViewController.swift */; };
 		6F43AAB8240B822800351AD0 /* ProfileNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AAB7240B822800351AD0 /* ProfileNavigationController.swift */; };
 		6F43AABA240B8BBE00351AD0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AAB9240B8BBE00351AD0 /* RegisterViewController.swift */; };
 		6F43AABC240B906100351AD0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F43AABB240B906100351AD0 /* GoogleService-Info.plist */; };
@@ -18,7 +21,6 @@
 		6F43AB71240D524100351AD0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AB70240D524100351AD0 /* Constants.swift */; };
 		6F43AB78240ECF5F00351AD0 /* FjallaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6F43AB77240ECF5F00351AD0 /* FjallaOne-Regular.ttf */; };
 		6F43AB82240ED3DB00351AD0 /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43AB81240ED3DB00351AD0 /* RoundTextField.swift */; };
-		6F89B329241A624D001CF0BF /* logo_book.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F89B328241A624D001CF0BF /* logo_book.jpg */; };
 		6F89B32B241A6340001CF0BF /* LibraryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89B32A241A6340001CF0BF /* LibraryTableViewController.swift */; };
 		6F89B32D241A637F001CF0BF /* LibraryNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89B32C241A637F001CF0BF /* LibraryNavigationController.swift */; };
 		6F89B331241A63BC001CF0BF /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F89B330241A63BC001CF0BF /* MapViewController.swift */; };
@@ -52,6 +54,9 @@
 /* Begin PBXFileReference section */
 		6F10A7D0240818D20072A71A /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		6F29EC50240580B800CAE702 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		6F301D97241C0B55007DB4E3 /* logo_book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_book.png; sourceTree = "<group>"; };
+		6F301D99241C0CAD007DB4E3 /* BookImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImage.swift; sourceTree = "<group>"; };
+		6F301D9B241C9748007DB4E3 /* DetailBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBookViewController.swift; sourceTree = "<group>"; };
 		6F43AAB7240B822800351AD0 /* ProfileNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNavigationController.swift; sourceTree = "<group>"; };
 		6F43AAB9240B8BBE00351AD0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6F43AABB240B906100351AD0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -96,7 +101,6 @@
 		6F43AB70240D524100351AD0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F43AB77240ECF5F00351AD0 /* FjallaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FjallaOne-Regular.ttf"; sourceTree = "<group>"; };
 		6F43AB81240ED3DB00351AD0 /* RoundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
-		6F89B328241A624D001CF0BF /* logo_book.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo_book.jpg; sourceTree = "<group>"; };
 		6F89B32A241A6340001CF0BF /* LibraryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTableViewController.swift; sourceTree = "<group>"; };
 		6F89B32C241A637F001CF0BF /* LibraryNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationController.swift; sourceTree = "<group>"; };
 		6F89B330241A63BC001CF0BF /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				6F89B32C241A637F001CF0BF /* LibraryNavigationController.swift */,
 				6F89B330241A63BC001CF0BF /* MapViewController.swift */,
 				6F89B332241A63EC001CF0BF /* MapNavigationController.swift */,
+				6F301D9B241C9748007DB4E3 /* DetailBookViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				6F43AB81240ED3DB00351AD0 /* RoundTextField.swift */,
+				6F301D99241C0CAD007DB4E3 /* BookImage.swift */,
 			);
 			path = UIHelpers;
 			sourceTree = "<group>";
@@ -200,7 +206,7 @@
 		6F9C546A2414360600ED2E4C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
-				6F89B328241A624D001CF0BF /* logo_book.jpg */,
+				6F301D97241C0B55007DB4E3 /* logo_book.png */,
 				6F9C546B2414362E00ED2E4C /* logo.png */,
 			);
 			path = Pictures;
@@ -361,7 +367,7 @@
 			files = (
 				6F43AB78240ECF5F00351AD0 /* FjallaOne-Regular.ttf in Resources */,
 				6FF9EF75240578F60021A25B /* LaunchScreen.storyboard in Resources */,
-				6F89B329241A624D001CF0BF /* logo_book.jpg in Resources */,
+				6F301D98241C0B55007DB4E3 /* logo_book.png in Resources */,
 				6F43AABC240B906100351AD0 /* GoogleService-Info.plist in Resources */,
 				6F9C546C2414362E00ED2E4C /* logo.png in Resources */,
 				6FF9EF72240578F60021A25B /* Assets.xcassets in Resources */,
@@ -434,7 +440,9 @@
 				6F89B335241A6411001CF0BF /* ProfileViewController.swift in Sources */,
 				6F43AB71240D524100351AD0 /* Constants.swift in Sources */,
 				6F89B32D241A637F001CF0BF /* LibraryNavigationController.swift in Sources */,
+				6F301D9A241C0CAD007DB4E3 /* BookImage.swift in Sources */,
 				6F89B33A241A66DF001CF0BF /* Book.swift in Sources */,
+				6F301D9C241C9748007DB4E3 /* DetailBookViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

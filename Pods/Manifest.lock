@@ -283,6 +283,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - PromisesObjC (1.2.8)
   - SwiftHEXColors (1.3.1)
+  - VisualEffectView (4.0.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -292,6 +293,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - LGButton
   - SwiftHEXColors
+  - VisualEffectView
 
 SPEC REPOS:
   trunk:
@@ -319,6 +321,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SwiftHEXColors
+    - VisualEffectView
 
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
@@ -345,7 +348,8 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   SwiftHEXColors: 7cc78ce189ddaff81f2ec1259b6b1dffdcda7643
+  VisualEffectView: 8c05bdc77490d84aabfa9fd17b1ffd6476da0e2c
 
-PODFILE CHECKSUM: 7743947a0c7f728dab33037f0c7014334bf970fa
+PODFILE CHECKSUM: 0cd9fd28b49973ac9200539e2d09d75e6bc18a66
 
 COCOAPODS: 1.9.0

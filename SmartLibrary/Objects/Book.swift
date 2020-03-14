@@ -16,15 +16,20 @@ class Book {
     let image: UIImage?
     let rating: CGFloat
     let available: Bool
+    let uid: String
+    let author: String
     
-    init?(name: String, description: String, image: UIImage?, rating: CGFloat, available: Bool) {
-        guard name.count > 0 || description.count > 0 else {
+    init?(uid: String, name: String, author: String, description: String, image: UIImage?, rating: CGFloat, available: Bool) {
+        guard name.count > 0 || description.count > 0 ||
+            uid.count > 0 || author.count > 0 else {
             return nil
         }
         guard rating >= rating * (-1) else {
             return nil
         }
         
+        self.uid = uid
+        self.author = author
         self.name = name
         self.description = description
         self.image = image

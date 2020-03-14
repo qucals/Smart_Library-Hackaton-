@@ -14,4 +14,17 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
     }
+    
+    @IBAction func acoountTapped(_ sender: Any) {
+    }
+    
+    @IBAction func notificationsTapped(_ sender: Any) {
+    }
+    
+    @IBAction func privacyTapped(_ sender: Any) {
+    }
+    
+    @IBAction func logOutTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

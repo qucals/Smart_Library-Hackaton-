@@ -14,19 +14,27 @@ class LibraryTableViewController: UITableViewController {
     var books: [Book] = []
     var booksCollectionRef: CollectionReference!
     
+    var limit = 5
+    var currentLoadedCell = 0
+    
+    var indexSelectedCell = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
     
+        // Set height of row
         tableView.estimatedRowHeight = 245
         tableView.rowHeight = 245
         
         booksCollectionRef = Firestore.firestore().collection(Constants.Firebase.pathToCollectionBooks)
+        
+        preLoadCells()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
+    
+    func preLoadCells() {
         booksCollectionRef.getDocuments { (snapshot, error) in
             if let err = error {
                 debugPrint("Error fetching docs: \(err)")
@@ -34,21 +42,35 @@ class LibraryTableViewController: UITableViewController {
                 guard let snap = snapshot else { return }
                 
                 for document in snap.documents {
-                    let data = document.data()
-                    
-                    let name = data["name"] as? String ?? "Unknown Book"
-                    let description = data["description"] as? String ?? "Unknown description"
-                    let available = data["canTake"] as? Bool ?? true
-                    
-                    // TODO: Added loading above data from firebase
-                    let image = UIImage(contentsOfFile: "logo_book.jpg")
-                    let rating: CGFloat = 0.0
-                    
-                    guard let book = Book(name: name, description: description, image: image, rating: rating, available: available) else {
+                    if self.currentLoadedCell == self.limit {
                         return
                     }
                     
+                    let data = document.data()
+                    
+                    let uid = document.documentID
+                    guard let name = data["name"] as? String else { continue }
+                    guard let author = data["author"] as? String else { continue }
+                    guard let description = data["description"] as? String else { continue }
+                    guard let available = data["available"] as? Bool else { continue }
+                    
+                    // TODO: Added loading above data from firebase
+                    let image = UIImage(imageLiteralResourceName: "logo_book.png")
+                    let rating: CGFloat = 0.0
+                    
+                    guard let book = Book(uid: uid,
+                                          name: name,
+                                          author: author,
+                                          description: description,
+                                          image: image,
+                                          rating: rating,
+                                          available: available) else {
+                        continue
+                    }
+                    
                     self.books.append(book)
+                    
+                    self.currentLoadedCell += 1
                 }
                 
                 self.tableView.reloadData()
@@ -67,7 +89,8 @@ class LibraryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.cellIdentifier, for: indexPath) as? BookTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.cellIdentifier,
+                                                       for: indexPath) as? BookTableViewCell else {
             fatalError("Error with dequeued cell to BookTableViewCell")
         }
         
@@ -77,6 +100,77 @@ class LibraryTableViewController: UITableViewController {
         cell.descriptionLabel.text = book.description
         cell.bookImage.image = book.image
         
+        if indexPath.row == self.books.count - 1 {
+            self.loadMoreCells()
+        }
+        
         return cell
+    }
+    
+    func loadMoreCells() {
+        
+        var skipLoadedCells = 0
+        
+        limit += 5
+        
+        booksCollectionRef.getDocuments { (snapshot, error) in
+            if let err = error {
+                debugPrint("Error fetching docs: \(err)")
+            } else {
+                guard let snap = snapshot else { return }
+                
+                for document in snap.documents {
+                    if skipLoadedCells != self.currentLoadedCell {
+                        skipLoadedCells += 1
+                        continue
+                    }
+                    
+                    if self.currentLoadedCell == self.limit {
+                        return
+                    }
+                    
+                    let data = document.data()
+                    
+                    let uid = document.documentID
+                    guard let name = data["name"] as? String else { continue }
+                    guard let author = data["author"] as? String else { continue }
+                    guard let description = data["description"] as? String else { continue }
+                    guard let available = data["available"] as? Bool else { continue }
+                    
+                    // TODO: Added loading above data from firebase
+                    let image = UIImage(imageLiteralResourceName: "logo_book.png")
+                    let rating: CGFloat = 0.0
+                    
+                    guard let book = Book(uid: uid,
+                                          name: name,
+                                          author: author,
+                                          description: description,
+                                          image: image,
+                                          rating: rating,
+                                          available: available) else {
+                        continue
+                    }
+                    
+                    self.books.append(book)
+                    
+                    self.currentLoadedCell += 1
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        indexSelectedCell = indexPath.row
+        
+        self.performSegue(withIdentifier: Constants.Storyboard.performSegueToSelectedCell, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is DetailBookViewController {
+            let vc = segue.destination as? DetailBookViewController
+            vc?.selectedBook = books[indexSelectedCell]
+        }
     }
 }

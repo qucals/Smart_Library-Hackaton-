@@ -17,7 +17,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var errorLabel: UILabel!
     
-    @IBOutlet weak var idCardTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
         
@@ -28,11 +28,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        idCardTextField.delegate = self
+        phoneTextField.delegate = self
         passwordTextField.delegate = self
         emailTextField.delegate = self
         
-        allTextFields.append(idCardTextField)
+        allTextFields.append(phoneTextField)
         allTextFields.append(emailTextField)
         allTextFields.append(passwordTextField)
     }
@@ -100,7 +100,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             signUpButton.isLoading = true
             
             // Create cleaned version of the data
-            let idCard = idCardTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let phone = phoneTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
@@ -119,17 +119,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     // User was created successfully, now story the username and id card
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["IdCard": idCard, "uid": result!.user.uid]) { (error) in
+                    db.collection("users").addDocument(data: ["Phone": phone, "Points": "0", "uid": result!.user.uid]) { (error) in
                         
                         if error != nil {
                             self.showError("Error saving user data")
                         }
                     }
                     
-                    self.dismiss(animated: true, completion: nil)
+                    self.transitionToHomeBC()
                 }
             }
         }
+    }
+    
+    func transitionToHomeBC() {
+        performSegue(withIdentifier: Constants.Storyboard.performSegueToHomeBC, sender: self)
     }
     
     func showError(_ message: String) {
