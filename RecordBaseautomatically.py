@@ -1,3 +1,4 @@
+# Программа для автоматической записи информации из IRBIS в БД Firebase
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -14,6 +15,7 @@ db = firestore.client()
 #Находим сколько книг уже имеется
 docs = db.collection(u'NewBook').stream()
 
+# документ типа TXT из которой будем считывать БД IRBIS
 f = open('C:/Users/itcub/Documents/GitHub/iOS_Library/Base_Irbis.TXT',encoding = 'utf-8')
 
 p = 0
@@ -90,8 +92,7 @@ def name():
                     fID+= '|'
                     i+=1
                 fID+= result[i]
-                i+=1
-                print(result[i])
+                i+=1                
             print(fID)
         #находим имя автора
         if(result[1]+result[2]+result[3] == '700'):
@@ -119,9 +120,10 @@ def name():
                 i+=1            
     send(fID, fname, fauthor, fpublisher, fdate, fbib)
             
-
-for line in f:
-    
-    if line != " ":
-        name()
+#Тест
+#ГЦ для записи
+#for line in f:
+#    
+#    if line != " ":
+#        name()
  
