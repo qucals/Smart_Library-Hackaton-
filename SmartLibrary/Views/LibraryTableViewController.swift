@@ -21,6 +21,8 @@ class LibraryTableViewController: UITableViewController {
     
     var indexSelectedCell = 0
     
+    var rootNavigationController: LibraryNavigationController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -163,6 +165,10 @@ class LibraryTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        rootNavigationController.currentUser = currentUser
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         indexSelectedCell = indexPath.row
         
@@ -173,6 +179,8 @@ class LibraryTableViewController: UITableViewController {
         if segue.destination is DetailBookViewController {
             let vc = segue.destination as? DetailBookViewController
             vc?.selectedBook = books[indexSelectedCell]
+            vc?.currentUser = currentUser
+            vc?.rootViewController = self
         }
     }
 }

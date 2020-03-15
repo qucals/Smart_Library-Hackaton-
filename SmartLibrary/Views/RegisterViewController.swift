@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 import FirebaseAuth
-import Firebase
+import FirebaseFirestore
 import LGButton
 
 class RegisterViewController: UIViewController, UITextFieldDelegate {

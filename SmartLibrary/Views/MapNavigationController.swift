@@ -10,8 +10,16 @@ import UIKit
 
 class MapNavigationController: UINavigationController {
 
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let vc = self.topViewController as? MapViewController
+        vc?.currentUser = currentUser
+        vc?.rootViewController = self
     }
 }

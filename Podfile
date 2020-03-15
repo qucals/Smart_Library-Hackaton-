@@ -18,4 +18,7 @@ target 'SmartLibrary' do
 
 	# For working with Blur Visual Effects
 	pod 'VisualEffectView'
+
+	# For working with Forms
+	pod 'XLForm', :git => 'https://github.com/xmartlabs/XLForm.git'
 end

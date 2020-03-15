@@ -21,6 +21,8 @@ class DetailBookViewController: UIViewController {
     var selectedBook: Book!
     var currentUser: User!
     
+    var rootViewController: LibraryTableViewController!
+    
     let db =  Firestore.firestore()
     
     override func viewDidLoad() {
@@ -55,8 +57,45 @@ class DetailBookViewController: UIViewController {
     }
     
     @IBAction func favouriteTapped(_ sender: Any) {
+        
+        let alert: UIAlertController!
+        
+        if let _ = currentUser.favourite_books.first(where: { $0 == self.selectedBook.uid }) {
+            
+            alert = UIAlertController(title: "Ошибка",
+                                          message: "Книга уже добавлена в список желаемых книг!",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Хорошо", style: .default, handler: nil))
+            
+        } else {
+            currentUser.favourite_books.append(selectedBook.uid)
+            let query = db.collection(Constants.Firebase.pathToUsers).document(currentUser.uid)
+            
+            query.updateData([
+                "favourite_books" : FieldValue.arrayUnion(["\(selectedBook.uid)"])
+            ])
+            
+            alert = UIAlertController(title: "Информация",
+                                          message: "Книга успешно добавлена!",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Хорошо",
+                                          style: .default,
+                                          handler: { action in self.dismiss(animated: true, completion: nil)
+            }))
+        }
+        
+        self.present(alert, animated: true)
     }
     
     @IBAction func takeTapped(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Дополнительная информация",
+                                      message: "Заполните следующие данные",
+                                      preferredStyle: .alert)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        rootViewController.currentUser = currentUser
     }
 }

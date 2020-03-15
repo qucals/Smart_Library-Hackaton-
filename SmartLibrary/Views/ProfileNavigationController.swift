@@ -13,10 +13,19 @@ class ProfileNavigationController: UINavigationController {
     
     var currentUser: User!
     
+    var rootViewController: MainTabBarController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let vc = self.topViewController as? ProfileViewController
         vc?.currentUser = currentUser
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        rootViewController.currentUser = currentUser
     }
 }

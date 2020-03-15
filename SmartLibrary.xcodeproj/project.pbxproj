@@ -139,12 +139,12 @@
 		6F29EC4F2405808800CAE702 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6F43AAB9240B8BBE00351AD0 /* RegisterViewController.swift */,
 				6F89B33B241A6904001CF0BF /* BookTableViewCell.swift */,
 				6F10A7D0240818D20072A71A /* MainTabBarController.swift */,
 				6FF9EF6C240578F40021A25B /* ViewController.swift */,
 				6F43AAB7240B822800351AD0 /* ProfileNavigationController.swift */,
 				6F89B334241A6411001CF0BF /* ProfileViewController.swift */,
-				6F43AAB9240B8BBE00351AD0 /* RegisterViewController.swift */,
 				6F89B32A241A6340001CF0BF /* LibraryTableViewController.swift */,
 				6F89B32C241A637F001CF0BF /* LibraryNavigationController.swift */,
 				6F89B330241A63BC001CF0BF /* MapViewController.swift */,
@@ -596,6 +596,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B75V6HKGL8;
 				INFOPLIST_FILE = SmartLibrary/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,6 +616,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B75V6HKGL8;
 				INFOPLIST_FILE = SmartLibrary/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -16,12 +16,21 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
-        let vc = self.viewControllers![0] as? ProfileNavigationController
-        vc?.currentUser = currentUser
         
         let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
-        }
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let vc_1 = self.viewControllers![0] as? ProfileNavigationController
+        vc_1?.currentUser = currentUser
+        vc_1?.rootViewController = self
+        
+        let vc_2 = self.viewControllers![1] as? LibraryNavigationController
+        vc_2?.currentUser = currentUser
+        vc_2?.rootViewController = self
+        
+        let vc_3 = self.viewControllers![2] as? MapNavigationController
+        vc_3?.currentUser = currentUser
     }
 }

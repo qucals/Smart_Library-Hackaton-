@@ -13,7 +13,6 @@ import FirebaseAuth
 import LGButton
 import FirebaseFirestore
 import Firebase
-import FirebaseDatabase
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
@@ -82,9 +81,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 
             // Sign In to the system
             Auth.auth().signIn(withEmail: email, password: password) { (authResult, err) in
-            
-                self.logInButton.isLoading = false
-                
                 // Check for errors
                 if err != nil {
                             
@@ -96,18 +92,33 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             guard let uid = Auth.auth().currentUser?.uid else { return }
             
-            ref.child(Constants.Firebase.pathToUsers).child(uid).observeSingleEvent(of: .value) { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let phone = value?["Phone"] as? String
-                let title = value?["Title"] as? String
-                let taken_books = value?["Taken_books"] as? [String]
-                let favourite_books = value?["Favourite_books"] as? [String]
-                let points = value?["Points"] as? Int
+            let db = Firestore.firestore().collection(Constants.Firebase.pathToUsers).document(uid)
+            db.getDocument { (snapshot, err) in
+                self.logInButton.isLoading = false
                 
-                self.currentUser = User(uid: uid, phone: phone!, title: title!, taken_books: taken_books!, favourite_books: favourite_books!, points: points!)
+                if let err = err {
+                    self.showError(err.localizedDescription)
+                } else {
+                    guard let snap = snapshot else { return }
+                    
+                    let data = snap.data()
+                    
+                    guard let phone = data!["Phone"] as? String else { return }
+                    guard let title = data!["Title"] as? String else { return }
+                    guard let points = data!["Points"] as? Int else { return }
+                    guard let favourite_books = data!["Favourite_books"] as? [String] else { return }
+                    guard let taken_books = data!["Taken_books"] as? [String] else { return }
+                    
+                    self.currentUser = User(uid: uid,
+                                            phone: phone,
+                                            title: title,
+                                            taken_books: taken_books,
+                                            favourite_books: favourite_books,
+                                            points: points)
+                    
+                    self.transitionToHome()
+                }
             }
-
-            self.transitionToHome()
         }
     }
     

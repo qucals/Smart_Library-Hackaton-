@@ -15,6 +15,8 @@ class ProfileViewController: UIViewController {
     
     var currentUser: User!
     
+    var rootViewController: ProfileNavigationController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,5 +35,9 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logOutTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        rootViewController.currentUser = currentUser
     }
 }

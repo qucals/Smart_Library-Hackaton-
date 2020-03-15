@@ -47,7 +47,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="34" translatesAutoresizingMaskIntoConstraints="NO" id="8Gq-nx-OY2">
-                                <rect key="frame" x="110" y="100" width="194.5" height="70"/>
+                                <rect key="frame" x="127.5" y="100" width="159" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="xVM-C8-25x"/>
                                 </constraints>
@@ -204,7 +204,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rLl-EZ-zsL" customClass="RoundTextField" customModule="SmartLibrary" customModuleProvider="target">
-                                <rect key="frame" x="69.5" y="322.5" width="275" height="45"/>
+                                <rect key="frame" x="69.5" y="327" width="275" height="45"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="tintColor" red="0.96470588235294119" green="0.44705882352941173" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -231,7 +231,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xft-Y6-Qnf" customClass="RoundTextField" customModule="SmartLibrary" customModuleProvider="target">
-                                <rect key="frame" x="69.5" y="407.5" width="275" height="45"/>
+                                <rect key="frame" x="69.5" y="412" width="275" height="45"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="tintColor" red="0.96470588235294119" green="0.44705882352941173" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -258,7 +258,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIBRARY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="CQ8-Hy-Qi3">
-                                <rect key="frame" x="104" y="169" width="206.5" height="58.5"/>
+                                <rect key="frame" x="129" y="169" width="156.5" height="63"/>
                                 <color key="tintColor" red="0.96470588239999999" green="0.44705882349999998" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="fQg-dZ-Sit"/>
@@ -268,7 +268,7 @@
                                 <color key="highlightedColor" red="0.96470588239999999" green="0.44705882349999998" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ofw-U5-JBo">
-                                <rect key="frame" x="115.5" y="222.5" width="183" height="25"/>
+                                <rect key="frame" x="141.5" y="227" width="131.5" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="qRt-Qg-ZnR"/>
                                 </constraints>
@@ -283,7 +283,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zxo-7L-PZG" customClass="LGButton" customModule="LGButton">
-                                <rect key="frame" x="69.5" y="492.5" width="275" height="45"/>
+                                <rect key="frame" x="69.5" y="497" width="275" height="45"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="275" id="RKj-gg-XdD"/>
@@ -335,7 +335,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6W-E9-zCv">
-                                <rect key="frame" x="140.5" y="547.5" width="133" height="29"/>
+                                <rect key="frame" x="140.5" y="552" width="133" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Forgot the password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -349,7 +349,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="YjO-t0-38h">
-                                <rect key="frame" x="69.5" y="297.5" width="275" height="0.0"/>
+                                <rect key="frame" x="69.5" y="302" width="275" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="275" id="SVr-lc-SGS"/>
                                 </constraints>
@@ -415,6 +415,7 @@
                     <connections>
                         <segue destination="HF4-Iq-gcf" kind="relationship" relationship="viewControllers" id="JoC-eT-ffy"/>
                         <segue destination="DGk-SE-BFe" kind="relationship" relationship="viewControllers" id="ZWZ-i6-65c"/>
+                        <segue destination="zo9-l6-1Vc" kind="relationship" relationship="viewControllers" id="pxz-eI-H1t"/>
                         <segue destination="azY-LE-peb" kind="relationship" relationship="viewControllers" id="Ql6-rZ-gcP"/>
                     </connections>
                 </tabBarController>
@@ -715,6 +716,9 @@
                         <viewLayoutGuide key="safeArea" id="tOM-54-vu4"/>
                     </view>
                     <navigationItem key="navigationItem" id="MSp-y6-dat"/>
+                    <connections>
+                        <outlet property="mapView" destination="v33-FD-QIz" id="Nz6-it-noH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zoM-uP-z7D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1030,7 +1034,7 @@
         <scene sceneID="uhM-zv-aTD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" hidesBarsOnSwipe="YES" id="azY-LE-peb" customClass="MapNavigationController" customModule="SmartLibrary" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="map.fill" catalog="system" id="Urc-m6-DQ9"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="location.fill" catalog="system" id="Urc-m6-DQ9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KFA-zi-ZAT">
                         <autoresizingMask key="autoresizingMask"/>
@@ -1044,15 +1048,64 @@
             </objects>
             <point key="canvasLocation" x="1618" y="1014"/>
         </scene>
+        <!--Events-->
+        <scene sceneID="C0x-bu-cX7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zo9-l6-1Vc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="flag.fill" catalog="system" id="vxl-1p-SKW"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qb1-1v-LqP">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="N13-EF-YD8" kind="relationship" relationship="rootViewController" id="mdo-Ug-h1u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X36-Bk-By8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1617" y="1788"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="LIh-60-7Oi">
+            <objects>
+                <tableViewController id="N13-EF-YD8" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bBx-Ar-IM8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dPg-PE-yq2">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPg-PE-yq2" id="lCt-WH-AT8">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="N13-EF-YD8" id="kWn-1h-m1d"/>
+                            <outlet property="delegate" destination="N13-EF-YD8" id="hiR-ZT-tZb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="CNZ-cO-pko"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xYx-SC-Ikq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2558" y="1788"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bell.fill" catalog="system" width="64" height="62"/>
         <image name="book.fill" catalog="system" width="64" height="50"/>
         <image name="chevron.right" catalog="system" width="48" height="64"/>
+        <image name="flag.fill" catalog="system" width="64" height="60"/>
+        <image name="location.fill" catalog="system" width="64" height="56"/>
         <image name="lock.fill" catalog="system" width="64" height="64"/>
         <image name="logo.png" width="384" height="384"/>
         <image name="logo_book.png" width="408" height="596"/>
-        <image name="map.fill" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="power" catalog="system" width="64" height="62"/>
     </resources>

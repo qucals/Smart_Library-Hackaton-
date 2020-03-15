@@ -7,11 +7,31 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class MapViewController: UIViewController {
 
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var currentUser: User!
+    
+    var rootViewController: MapNavigationController!
+
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+        
+        mapView.showsUserLocation = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        rootViewController.currentUser = currentUser
     }
 }
