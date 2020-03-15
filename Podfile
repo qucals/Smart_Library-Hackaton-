@@ -20,5 +20,5 @@ target 'SmartLibrary' do
 	pod 'VisualEffectView'
 
 	# For working with Forms
-	pod 'XLForm', :git => 'https://github.com/xmartlabs/XLForm.git'
+	pod 'Eureka'
 end

@@ -11,10 +11,15 @@ import UIKit
 class MapNavigationController: UINavigationController {
 
     var currentUser: User!
+    var rootViewController: MainTabBarController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        rootViewController.currentUser = currentUser
     }
     
     override func viewWillAppear(_ animated: Bool) {

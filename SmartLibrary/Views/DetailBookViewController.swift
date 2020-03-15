@@ -89,13 +89,19 @@ class DetailBookViewController: UIViewController {
     
     @IBAction func takeTapped(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Дополнительная информация",
-                                      message: "Заполните следующие данные",
-                                      preferredStyle: .alert)
+        performSegue(withIdentifier: Constants.Storyboard.performSegueToInformationTaking, sender: self)
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         rootViewController.currentUser = currentUser
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? InformationTaking {
+            vc.currentUser = currentUser
+            vc.rootViewController = self
+            vc.selectedBook = selectedBook
+        }
     }
 }

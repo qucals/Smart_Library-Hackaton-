@@ -164,6 +164,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
+  - Eureka (5.2.0)
   - Firebase/Analytics (6.19.0):
     - Firebase/Core
   - Firebase/Auth (6.19.0):
@@ -286,6 +287,7 @@ PODS:
   - VisualEffectView (4.0.2)
 
 DEPENDENCIES:
+  - Eureka
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -299,6 +301,7 @@ SPEC REPOS:
   trunk:
     - abseil
     - BoringSSL-GRPC
+    - Eureka
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -326,6 +329,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
+  Eureka: 820a761c700f6eaab3b60758f138e0d9b99072b3
   Firebase: d55ddb0e0bb3207166cddc028647833d8a1b5b6f
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
   FirebaseAuth: 5ce2b03a3d7fe56b7a6e4c5ec7ff1522890b1d6f
@@ -350,6 +354,6 @@ SPEC CHECKSUMS:
   SwiftHEXColors: 7cc78ce189ddaff81f2ec1259b6b1dffdcda7643
   VisualEffectView: 8c05bdc77490d84aabfa9fd17b1ffd6476da0e2c
 
-PODFILE CHECKSUM: 0cd9fd28b49973ac9200539e2d09d75e6bc18a66
+PODFILE CHECKSUM: f25105729fcce47657a5c4eaf15d2439e7d29407
 
 COCOAPODS: 1.9.0

@@ -16,8 +16,10 @@ struct Constants {
         
         static let performSegueToHomeBC = "toHomeBC"
         static let performSegueToSelectedCell = "toDetailBook"
+        static let performSegueToInformationTaking = "toInformationTaking"
         
-        static let cellIdentifier = "bookCell"
+        static let bookCellIndentifier = "bookCell"
+        static let eventCellIndentifier = "eventCell"
     }
     
     struct Colours {
@@ -35,5 +37,7 @@ struct Constants {
         
         static let pathToCollectionBooks = "books"
         static let pathToUsers = "users"
+        static let pathToEvents = "events"
+        static let pathToRecords = "records"
     }
 }

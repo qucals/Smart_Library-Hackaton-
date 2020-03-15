@@ -22,7 +22,7 @@ class LibraryNavigationController: UINavigationController {
     override func viewWillAppear(_ animated: Bool) {
         let vc = self.topViewController as? LibraryTableViewController
         vc?.currentUser = currentUser
-        vc?.rootNavigationController = self
+        vc?.rootViewController = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {

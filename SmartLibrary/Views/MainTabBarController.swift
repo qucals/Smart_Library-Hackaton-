@@ -30,7 +30,12 @@ class MainTabBarController: UITabBarController {
         vc_2?.currentUser = currentUser
         vc_2?.rootViewController = self
         
-        let vc_3 = self.viewControllers![2] as? MapNavigationController
+        let vc_3 = self.viewControllers![2] as? EventsNavigationController
         vc_3?.currentUser = currentUser
+        vc_3?.rootViewController = self
+        
+        let vc_4 = self.viewControllers![3] as? MapNavigationController
+        vc_4?.currentUser = currentUser
+        vc_4?.rootViewController = self
     }
 }

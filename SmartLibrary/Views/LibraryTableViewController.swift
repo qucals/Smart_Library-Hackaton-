@@ -21,7 +21,7 @@ class LibraryTableViewController: UITableViewController {
     
     var indexSelectedCell = 0
     
-    var rootNavigationController: LibraryNavigationController!
+    var rootViewController: LibraryNavigationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,7 @@ class LibraryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.cellIdentifier,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.bookCellIndentifier,
                                                        for: indexPath) as? BookTableViewCell else {
             fatalError("Error with dequeued cell to BookTableViewCell")
         }
@@ -128,7 +128,6 @@ class LibraryTableViewController: UITableViewController {
                         skipLoadedCells += 1
                         continue
                     }
-                    
                     if self.currentLoadedCell == self.limit {
                         return
                     }
@@ -166,7 +165,7 @@ class LibraryTableViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        rootNavigationController.currentUser = currentUser
+        rootViewController.currentUser = currentUser
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
